@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+
+    <title>Birthday Box</title>
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+      <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href="css/style.css" rel="stylesheet">
+             <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-81280918-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  
+   
+  </head>
+  <body>
+  <div class="jumbotron" style="font-size:30px; text-align:center"> Coming Soon! </div>
+ <img class="featurette-image img-responsive center-block splash" src="../img/BdayBMadisonRed.png" alt="Generic placeholder image">
+ <div id="form-main">
+
+          <div id="form-div">
+          <h3 style="color:#AE0000; text-align:center">Birthday Box Madison will start taking orders in a few weeks. Please leave your name and email if you would like to stay updated!</h3><br><br>
+            <form class="form" id="form1">
+              <p class="name">
+               <input name="name" type="text" class="feedback-input" id="name" placeholder="Name" required="required"/>
+              </p>
+              
+              <p class="email">
+
+                <input name="email" type="email" class="feedback-input" id="email" placeholder="Email" required="required" />
+              </p>
+              
+      
+                     
+              <div class="submit">
+                <input type="submit" value="SEND" id="button-blue"/>
+                <div class="ease"></div>
+              </div>
+              <div style="display:none; font-size:20px; color:#AE0000;border-color:#AE0000" id="notification">Thank you! We'll update you when the site is ready</div>
+            </form>
+
+            <script>
+          
+              
+             $('#form1').submit(function (event) {
+               event.preventDefault();
+               if ($(this).validate({
+                   rules: {
+                       name: {
+                           required: true,
+                       },
+                
+                       email: {
+                           required: true,
+                           email:true
+                       }
+                   }
+               }).form()){
+                       var post_data = $('#form1').serialize();
+                       $.post('php/mail.php', post_data, function(data) {
+                       $('#notification').show();
+              });
+                   } else {
+                       return false;
+                   }
+            });
+          
+          </script>
+   
+  </body>
