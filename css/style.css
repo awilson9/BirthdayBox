@@ -22,6 +22,10 @@ a:hover{
   text-decoration:none;
 }
 
+#dp1{
+  background-color:white;
+}
+
 .input-warning{
   background:red;
   opacity:.5;
@@ -918,11 +922,21 @@ input:focus, textarea:focus {
   background-color: rgba(0,0,0,0);
   color: #AE0000;
 }
-  
+@media (max-width: 920px) &nbsp; &nbsp;{
+   .submit:hover{
+      .hide { display:none !important; }
+   }
+}
+  @media (min-width: 920px) &nbsp; &nbsp;{
 .submit:hover {
   color: #3498db;
 }
-  
+.submit:hover .ease{
+  width:100%;
+  background-color:white;
+}
+}
+
 .ease {
   width: 0px;
   height: 74px;
@@ -934,10 +948,7 @@ input:focus, textarea:focus {
   transition: .3s ease;
 }
 
-.submit:hover .ease{
-  width:100%;
-  background-color:white;
-}
+
 
 @media only screen and (max-width: 580px) {
   #form-div{
