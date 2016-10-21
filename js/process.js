@@ -112,7 +112,10 @@ function stripeResponseHandler(status, response) {
 		f.append("<input type='hidden' name='orderID' value='" + order_id + "' />");
 		$.post('./php/buy.php', f.serialize()+'&email=' + email, function(data){
 	  			$('#payment-errors').text(data);
-	  			sendEmail(id);
+	  			if(data==="success") sendEmail(id);
+	  			else{
+	  				$('#submitBtn').prop('disabled', false);
+	  			}
 		});
 	   }
 	   function sendEmail(id){

@@ -29,12 +29,13 @@ try {
         'description' => 'description'
     ));
 } catch (\Stripe\Error\Card $e) {
-	echo 'the charge was declined, please try again and make sure javascript is enabled';
+	echo 'The charge was declined, please check the CVC and Zip Code again and make sure javascript is enabled';
 }
 
 if($charge->paid==true){
 	$updateOrderQuery = "UPDATE ORDERS SET order_charged='1' WHERE order_ID='$order_ID' limit 1";
 	mysqli_query($conn, $updateOrderQuery) or die(mysqli_error());
+    echo "success";
 }
 mysqli_close($conn);
 

@@ -278,14 +278,15 @@ function navigate(left){
                 displayMessage = false;
                 }
             });
-            if(displayAlert) alert("One or more required fields is empty")
+            if(displayAlert) alert("One or more required fields is empty");
+            else $('#right').prop('disabled', true);
             displayOrder();
         }
     }
     else if(order.orderPage==5){
         leftToggle="#delivery-info";
         rightToggle="#summary";
-         $('#right').prop('disabled', false);
+        $('#right').prop('disabled', false);
     }
     if(!proceed){
         if(displayMessage) alert("You must make a selection before proceeding");
@@ -298,6 +299,7 @@ function navigate(left){
             progressValue+=16;
             order.orderPage++;
         }
+
     }
     if (left){
         progressValue-=16;
@@ -381,6 +383,7 @@ function processGiftCard(type, value){
     order.giftCardSelected = true;
     if(already){
         order.giftCardSelected = false;
+        order.price=0;
         for(var giftCard in order.giftcards){
             if(giftCard!="orderID"){
                order.giftcards[giftCard].selected = false;
