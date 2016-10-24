@@ -82,6 +82,13 @@ $(document).ready(function() {
    }
 });
 
+$('#email-address').change(function(){
+    var e = $(this).val();
+    $.post('./php/email_track.php','email='+e, function(data){
+
+    }); 
+    });
+
 $('.go-to-top').each(function(){
     $(this).click(function(){ 
         $('html,body').animate({ scrollTop: 0 }, 'slow');

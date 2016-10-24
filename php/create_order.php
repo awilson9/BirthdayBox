@@ -12,7 +12,7 @@ if(!$conn){
 
 $address = $_POST['address'];
 $apt_no = intval($_POST['apt']);
-$phone = intval($_POST['phone-number']);
+$phone = $_POST['phone-number'];
 $fname= $_POST['fname_deliv'];
 $lname = $_POST['lname_deliv'];
 $message = $_POST['message'];

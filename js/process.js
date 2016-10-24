@@ -83,7 +83,6 @@ function stripeResponseHandler(status, response) {
 	  f.append("<input type='hidden' name='stripeToken' value='" + token + "' />");
 
 	  var order_id = 0;
-	  var phone = $('#phone-number').val();
 	  var delivery_info = $("#delivery_info").serialize();
 	  var address = $('#autocomplete').val();
 	  var personal_message = $("#personal_message").serialize();
@@ -95,7 +94,7 @@ function stripeResponseHandler(status, response) {
 	  var email=$('#email-address').val();
 	  var date = $('#dp1').val();
 
-	  $.post('./php/create_order.php', 'address='+ address+'&phone-number='+ phone +'&date=' + date +'&' +'apt=' +apt + '&' +delivery_info+'&'+ personal_message +'&' + 'img=' + imgURL + '&' + f.serialize(), function(data){
+	  $.post('./php/create_order.php', 'address='+ address +'&date=' + date +'&' +'apt=' +apt + '&' +delivery_info+'&'+ personal_message +'&' + 'img=' + imgURL + '&' + f.serialize(), function(data){
 	  	order_id = Number(data);
 	  	createOrderDetails(order_id);
 	  }); 
