@@ -111,7 +111,10 @@ function stripeResponseHandler(status, response) {
 		f.append("<input type='hidden' name='orderID' value='" + order_id + "' />");
 		$.post('./php/buy.php', f.serialize()+'&email=' + email, function(data){
 	  			$('#payment-errors').text(data);
-	  			if(data==="success") sendEmail(id);
+	  			if(data==="success") {
+	  				sendSlack(id);
+	  				sendEmail(id);
+	  			}
 	  			else{
 	  				$('#submitBtn').prop('disabled', false);
 	  			}
@@ -121,6 +124,10 @@ function stripeResponseHandler(status, response) {
 	   		$.post('./php/email-order.php', 'orderID=' + id,function(data){
 	   			window.onbeforeunload = null;
 	   			window.location.replace("http://bdayb.com/success.html");
+	   });
+	   	}
+	   	function sendSlack(id){
+	   		$.post('./php/slack_order_integration.php', 'orderID=' + id,function(data){
 	   });
 	   	}
 	}
