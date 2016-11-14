@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
+    <meta name="description" content="Send your student Madison’s best birthday gift! The Birthday Box includes your choice of pastry, a gift card, a custom birthday card, and other fun extras! All this delivered straight to your student’s door! Our baked goods are baked fresh daily by a local Madison bakery and include options like mini cakes, doughnuts, and cookie sandwiches. Don't just send a boring old card that will be throw away seconds after being opened. Send an experience. Send a Birthday Box.">
     <meta name="author" content="">
     
 
@@ -28,6 +28,7 @@
     <!-- Custom styles for this template -->
    
     <link href="css/style.css" rel="stylesheet">
+     <link rel="stylesheet" href="js/datepicker/css/datepicker.css">
     <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
                  <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -51,7 +52,7 @@
         inset 0px -11px 8px -10px #CCC;background:white;height:60px; ">
         <div class="trigger-menu"  style="position:absolute;left:10px;top:5px"><img height="45px"  id="menu-icon" width="45px" src="../img/menu-icon.png"><span class="amatic">Menu</span></div>
         <img height="45px" class="trigger-menu" style="position:relative;top:10px" width="172px" src="../img/BirthdayBoxred.png" alt="Logo">
-          <a id="header-button" style="display:none;position:absolute;top:1px;right:50px" href="order.html"><button type="button" class="btn btn-primary go-to-top  raised"><p class="amatic" style="font-size:30px;margin:0">Order Now</p></button></a>
+          <a id="header-button" style="position:absolute;top:1px;right:50px" href="order.html"><button type="button" class="btn btn-primary go-to-top  raised"><p class="amatic" style="font-size:30px;margin:0">Order Now</p></button></a>
          <div class="trigger-menu" id="close-menu" style="position:absolute;top:15px;right:10px;display:none">X</div>
       </div>
       
@@ -61,7 +62,7 @@
               <li><a href="index.html">Home</a></li>
             <li><a href="order.html">Order</a></li>
             <li><a id="about-link" href="https://www.bdayb.com/#about">About</a></li>
-            <li><a id="review-link" href="https://www.bdayb.com/#review">Leave A Review</a></li>
+            <li><a id="review-link" href="https://www.bdayb.com/#review">Contact Us</a></li>
           </ul>
       </div>
 
@@ -71,7 +72,7 @@
     <header class="header">
     
       <p class="amatic image-text">Birthdays Away From Home Just Got Better<br>
-       <a href="order.html"><button type="button" class="btn btn-primary go-to-top  raised"><p style="font-size:30px;margin:0">Order Now</p></button></a></p>
+       </p>
     </header>
   
     <!-- Marketing messaging and featurettes
@@ -90,7 +91,7 @@
       <div class="row featurette">
         <div class="col-md-7 col-xs-12">
           <h2 class="featurette-heading amatic">The Perfect Gift</h2>
-          <p class="lead">Send your student Madison’s best birthday gift! The Birthday Box includes your choice of pastry, a gift card, a custom birthday card, and other fun extras! All this delivered straight to your student’s door!</p>
+          <p class="lead">Send your student Madison’s best birthday gift! The Birthday Box includes your choice of pastry, a gift card, a custom birthday card, and other fun extras! All this delivered straight to your student’s door! Our baked goods are baked fresh daily by a local Madison bakery and include options like mini cakes, doughnuts, and cookie sandwiches. Don't just send a boring old card that will be throw away seconds after being opened. Send an experience. Send a Birthday Box.</p>
         </div>
         <div class="col-md-5 col-xs-12">
           <img class="featurette-image img-circle img-border img-responsive center-block" src="../img/first.png" alt="product">
@@ -220,7 +221,56 @@
       </div>
 
       <!-- /END THE FEATURETTES -->
-     
+      <div class='wrap'>
+        <div class='content'>
+        <form role="form" class="amatic" id="reminder-form">
+          <div class="form-group">
+            <label for="reminder-email" class="control-label">What's your email?</label>
+            <input id="reminder-email" name="reminder_email" type="email" class="form-control" required="required">
+          </div>
+          <div class="form-group">
+            <label for="dp-index" class="control-label">What day would you like a reminder? (valid delivery dates: 2 days from now - 12/20/16 and 1/20/17 - 5/15/17</label>
+           
+              <input type="text" name="reminder_date" class="form-control info" value="" required="required" data-date-format="mm/dd/yy" readonly="readonly" id="dp-index">
+      
+          </div>
+          <div id="reminder-submit">
+                <input class="btn btn-primary amatic raised" style="width:100%; font-size:40px;" type="submit" value="SEND"/>
+          </div>
+          <div id="reminder-notification" style="display:none; font-size:40px" class="amatic">Great! We will send you a reminder a week before that day!</div>
+        </form>
+        </div>
+      </div>
+     <button id="bottom-button" type="button" style="font-size:25px" class="btn btn-primary go-to-top amatic raised">Not Ready to Order? Get a Reminder!</button>
+     <script>
+          
+              
+             $('#reminder-form').submit(function (event) {
+               event.preventDefault();
+               if ($(this).validate({
+                   rules: {
+                       reminder_email: {
+                           required: true,
+                           email:true
+                       },
+                       reminder_date:{
+                        required:true
+                       }
+                   }
+               }).form()){
+                       var post_data = $('#reminder-form').serialize();
+                       $.post('php/reminder.php', post_data, function(data) {
+                       $('#reminder-notification').show();
+                       setTimeout(function(){
+                        $('#reminder-button').trigger("click");
+                       }, 200);
+              });
+                   } else {
+                       return false;
+                   }
+            });
+          
+          </script>
       
       <!-- FOOTER -->
       <footer>
@@ -235,7 +285,8 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-  
+      <script type="text/javascript" src="js/datepicker/js/bootstrap-datepicker.js"></script>
+      <script src="js/index.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
       <script src="/js/navbar.js"></script>
   </body>

@@ -1,3 +1,4 @@
+/*In case they want the fade in scroll bar again...
 (function ($) {
   $(document).ready(function(){
 
@@ -21,3 +22,24 @@
 
 });
   }(jQuery));
+  */
+
+$('#bottom-button').on('click', function(){
+  $('.wrap, #bottom-button').toggleClass('active');
+  
+  return false;
+});
+
+var nowTemp = new Date();
+var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+var w_start = new Date(2016, 11, 20, 0, 0, 0,0);
+var w_end = new Date(2017, 0, 20,0,0,0,0);
+var sem_end = new Date(2017, 4, 15, 0, 0,0, 0);
+$('#dp-index').datepicker({
+  onRender: function(date) {
+    var nw = now.valueOf();
+    return (date.valueOf() < (now.valueOf()+172800000)||(date.valueOf()>w_start.valueOf()&&date.valueOf()<w_end.valueOf())||(date.valueOf()>sem_end.valueOf())) ? 'disabled' : '';
+  }})
+  .on('changeDate', function(ev){
+    $('#dp-index').datepicker('hide');
+  });
