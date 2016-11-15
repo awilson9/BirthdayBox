@@ -26,4 +26,61 @@ if(mysqli_query($conn, $query)){
 
 mysqli_close($conn);
 
+
+
+$fields = array(
+  array(
+    "title" => 'Date',
+    "value" => $date,
+    "short" => false
+    ),
+  array(
+    "title" => 'Email',
+    "value" => $email,
+    "short" => false
+    ),
+ 
+
+  );
+
+$attachment = array(
+  'fallback' => 'Reminder', // A required markdown textfield that is displayed on devices that can't display Attachments
+  'pretext' => 'Details :tada:',
+  'color' => '#AE0000', 
+  'fields' => $fields,
+
+);
+
+
+$message = "New Reminder"; 
+$room = "contact"; 
+$icon = ":tada:"; 
+$data = "payload=" . json_encode(array(         
+        "channel"       =>  "#{$room}",
+        "text"          =>  $message,
+        "icon_emoji"    =>  $icon,
+        "attachments"   =>  array($attachment)
+    ),JSON_PRETTY_PRINT);
+
+
+$url = "https://hooks.slack.com/services/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";
+         
+ 
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+$result = curl_exec($ch);
+echo var_dump($result);
+if($result === false)
+{
+    echo 'Curl error: ' . curl_error($ch);
+}
+ 
+curl_close($ch);
+
+
+
 ?>
