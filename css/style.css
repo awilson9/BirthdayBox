@@ -89,6 +89,9 @@
    font-size:30px;
 }
 }
+.normal-font{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
 .wrap .content {
   opacity: 0;
 }
