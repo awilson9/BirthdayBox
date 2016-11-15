@@ -24,6 +24,15 @@
   }(jQuery));
   */
 
+
+  $(document).ready(function(){
+    if($(window).width()<500){
+        $('#header-button').toggle();
+        $('#mobile-button').toggle();
+    }
+    });
+
+
 $('#bottom-button').on('click', function(){
   $('.wrap, #bottom-button').toggleClass('active');
   
