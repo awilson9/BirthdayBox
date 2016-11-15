@@ -37,8 +37,8 @@ var w_end = new Date(2017, 0, 20,0,0,0,0);
 var sem_end = new Date(2017, 4, 15, 0, 0,0, 0);
 $('#dp-index').datepicker({
   onRender: function(date) {
-    var nw = now.valueOf();
-    return (date.valueOf() < (now.valueOf()+172800000)||(date.valueOf()>w_start.valueOf()&&date.valueOf()<w_end.valueOf())||(date.valueOf()>sem_end.valueOf())) ? 'disabled' : '';
+    var nw = now.valueOf();                
+    return (date.valueOf() < (now.valueOf()+604800000)||(date.valueOf()>w_start.valueOf()&&date.valueOf()<w_end.valueOf())||(date.valueOf()>sem_end.valueOf())) ? 'disabled' : '';
   }})
   .on('changeDate', function(ev){
     $('#dp-index').datepicker('hide');

@@ -223,7 +223,7 @@
       <!-- /END THE FEATURETTES -->
       <div class='wrap'>
         <div class='content'>
-        <div id="reminder-notification" style="display:none; font-size:40px" class="amatic">Great! We will send you a reminder a week before that day!</div>
+        <div id="reminder-notification" style="display:none; font-size:40px;color:white" class="amatic">Great! We will send you a reminder a week before that day!</div>
         <form role="form" class="amatic" id="reminder-form">
           <div class="form-group">
             <label for="reminder-email" class="control-label">What's your email?</label>
@@ -264,7 +264,7 @@
                       $('#reminder-notification').toggle('slide');
                        setTimeout(function(){
                         $('#bottom-button').trigger("click");
-                       }, 400);
+                       }, 3000);
               });
                    } else {
                      
