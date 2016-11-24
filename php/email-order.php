@@ -13,6 +13,7 @@
 	$order = 0;
 	if( isset($_POST['orderID']) ){
 	$order = intval($_POST['orderID']);
+
 }
 else{
 	$order = intval($argv[1]);
@@ -24,8 +25,13 @@ else{
     $item_results = mysqli_query($conn, $item_query)
     or  die(mysqli_error());
 
+
+    $row_order = mysqli_fetch_assoc($result);
+    $size = $row_order['order_size'];
     $giftcard = "No Giftcards";
     $item = "";
+   
+    
     while($row= mysqli_fetch_array($item_results)){
     	if(intval($row['product_FK'])==7){
     		$giftcard = "$25 University Bookstore Gift Card";
@@ -64,32 +70,54 @@ else{
     		$giftcard = "$50 Chipotle Gift Card";
     	}
     		else if(intval($row['product_FK'])==1){
-    		$item = "2 Doughnuts";
-
+    			if($size=="Individual"){
+    				$item = "2 Doughnuts";
+    			}
+    			else if($size=="Double"){
+    				$item = "4 Doughnuts";
+    			}
+    			else if($size=="Group"){
+    				$item = "6 Doughnuts";
+    			}
     	}
     		else if(intval($row['product_FK'])==3){
-    		$item = "2 Cookies";
+    		if($size=="Individual"){
+    				$item = "2 Cookies";
+    			}
+    			else if($size=="Double"){
+    				$item = "4 Cookies";
+    			}
+    			else if($size=="Group"){
+    				$item = "6 Cookies";
+    			}
     	}
     		else if(intval($row['product_FK'])==5){
-    		$item = "1 " .  $row['order_description'];
+    			$split = explode(" ", $row['order_description']);
+    			if($size=="Individual"){
+    				$item = "1 " . $split[0] . " Cake " . $split[1] . " Frosting";
+    			}
+    			else if($size=="Double"){
+  	 				$item = "2 " . $split[0] . " Cakes " . $split[1] . " Frosting";			
+      			}
+    			else if($size=="Group"){
+    				$item = "3 " . $split[0] . " Cakes " . $split[1] . " Frosting";
+    			}
     	}
 
     }
-
-
-	$row = mysqli_fetch_assoc($result);
+	
 	$mail = new PHPMailer();
 	$mail->IsSendmail();
-	$mail->SetFrom($row['order_email'],$row['order_name']);
+	$mail->SetFrom($row_order['order_email'],$row_order['order_name']);
 	$mail->AddAddress('orders@bdayb.com', "BdayB");
 	$mail->Subject = "New Order";
-		$img = "files/".$row['order_img'];
+		$img = "files/".$row_order['order_img'];
 
 	$mail->AddAttachment($img);
 
 	$mail->AddEmbeddedImage("../img/BdayBMadisonRed.png", "logo");
 
-	$price = "$" . $row['order_price']/100; 
+	$price = "$" . $row_order['order_price']/100; 
 	$email_message  = 
 	"<div style='height:500px;'>
 		<img height='150px' width='150px' src='cid:logo'>
@@ -100,7 +128,7 @@ else{
 	"<table style='width:100%'>
 		<tr>
 			<td style='margin-left:20%'>" 
-				. $row['order_date']. 
+				. $row_order['order_date']. 
 			"</td>
 			<td style='align:right;margin-right:20%'>
 				#" . $order .
@@ -112,7 +140,7 @@ else{
 				1. Delivery Date: 
 			</td>" .
 			"<td style='align:right;margin-right:20%'>" .
-				 $row['order_bday'] . 
+				 $row_order['order_bday'] . 
 			"</td>" .
 		"</tr>
 		<tr>		
@@ -137,7 +165,7 @@ else{
 				4. Message: 
 			</td>
 			<td style='align:right;margin-right:20%'>" 
-				. $row['order_message'] . 
+				. $row_order['order_message'] . 
 			"</td>
 		</tr>
 		<tr>
@@ -145,7 +173,7 @@ else{
 				5. Recipient Info: 
 			</td>
 			<td style='align:right;margin-right:20%'>" . 
-				$row['order_first'] . " " . $row['order_last'] . " " . $row['order_phone'] . 
+				$row_order['order_first'] . " " . $row_order['order_last'] . " " . $row_order['order_phone'] . 
 			"</td>
 		</tr>
 		<tr>
@@ -153,7 +181,7 @@ else{
 				6. Recipient Address: 
 			</td>
 			<td style='align:right;margin-right:20%'>" 
-				. $row['order_address'] . " apartment " . $row['order_apt'] . 
+				. $row_order['order_address'] . " apartment " . $row_order['order_apt'] . 
 			"</td>
 		</tr>
 		<tr>
@@ -161,11 +189,19 @@ else{
 				7. Purchaser name: 
 			</td>
 			<td style='align:right;margin-right:20%'>"
-			 . $row['order_name'] .
-			 "<td>
+			 . $row_order['order_name'] .
+			 "</td>
 		</tr>
+		<tr>
+			<td style='margin-left:20%'>
+				8. Allergies:
+			</td>
+			<td style = 'align:right;margin-right:20%'>"
+			. $row_order['order_allergy'] . 
+			"</td>
 	</table>";
-		
+
+
 	$mail->MsgHTML($email_message);
 	if(!$mail->Send()){
 		echo "Mailer Error: " . $mail->ErrorInfo; 
@@ -177,15 +213,15 @@ else{
 	$mail = new PHPMailer();
 	$mail->IsSendmail();
 	$mail->SetFrom('orders@bdayb.com', "BdayB");
-	$mail->AddAddress($row['order_email'],$row['order_name']);
+	$mail->AddAddress($row_order['order_email'],$row_order['order_name']);
 	$mail->Subject = "New Order";
-		$img = "files/".$row['order_img'];
+		$img = "files/".$row_order['order_img'];
 
 	$mail->AddAttachment($img);
 
 	$mail->AddEmbeddedImage("../img/BdayBMadisonRed.png", "logo");
 
-	$price = "$" . $row['order_price']/100; 
+	$price = "$" . $row_order['order_price']/100; 
 	$email_message  = 
 	"<div style='height:500px;'>
 		<img height='150px' width='150px' src='cid:logo'>
@@ -196,7 +232,7 @@ else{
 	"<table style='width:100%'>
 		<tr>
 			<td style='margin-left:20%'>" 
-				. $row['order_date']. 
+				. $row_order['order_date']. 
 			"</td>
 			<td style='align:right;margin-right:20%'>
 				#" . $order .
@@ -208,7 +244,7 @@ else{
 				1. Delivery Date: 
 			</td>" .
 			"<td style='align:right;margin-right:20%'>" .
-				 $row['order_bday'] . 
+				 $row_order['order_bday'] . 
 			"</td>" .
 		"</tr>
 		<tr>		
@@ -233,7 +269,7 @@ else{
 				4. Message: 
 			</td>
 			<td style='align:right;margin-right:20%'>" 
-				. $row['order_message'] . 
+				. $row_order['order_message'] . 
 			"</td>
 		</tr>
 		<tr>
@@ -241,7 +277,7 @@ else{
 				5. Recipient Info: 
 			</td>
 			<td style='align:right;margin-right:20%'>" . 
-				$row['order_first'] . " " . $row['order_last'] . " " . $row['order_phone'] . 
+				$row_order['order_first'] . " " . $row_order['order_last'] . " " . $row_order['order_phone'] . 
 			"</td>
 		</tr>
 		<tr>
@@ -249,7 +285,7 @@ else{
 				6. Recipient Address: 
 			</td>
 			<td style='align:right;margin-right:20%'>" 
-				. $row['order_address'] . " apartment " . $row['order_apt'] . 
+				. $row_order['order_address'] . " apartment " . $row_order['order_apt'] . 
 			"</td>
 		</tr>
 		<tr>
@@ -257,10 +293,18 @@ else{
 				7. Purchaser name: 
 			</td>
 			<td style='align:right;margin-right:20%'>"
-			 . $row['order_name'] .
-			 "<td>
+			 . $row_order['order_name'] .
+			 "</td>
 		</tr>
+		<tr>
+			<td style='margin-left:20%'>
+				8. Allergies:
+			</td>
+			<td style = 'align:right;margin-right:20%'>"
+			. $row_order['order_allergy'] . 
+			"</td>
 	</table>";
+
 		
 	$mail->MsgHTML($email_message);
 	if(!$mail->Send()){
@@ -270,5 +314,5 @@ else{
 		echo "Message sent!";
 	}
 	
-
+	mysqli_close($conn);
 ?>

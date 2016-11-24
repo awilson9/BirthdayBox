@@ -719,6 +719,7 @@ function displayOrder(){
     var gc = order.giftcards;
     document.getElementById("treat_type").innerHTML = "1 " + order.item + " " + order.orderSize + " box";
     var total = order.price;
+    $('#close-giftcard').hide();
     if(order.orderSize==="Individual") {
         document.getElementById("treat_price").innerHTML = "$20.00";
         total+=20;
@@ -736,6 +737,7 @@ function displayOrder(){
             if(gc.Amazon.type==1) document.getElementById("amazon_price").innerHTML = "$25.00";
             else if(gc.Amazon.type==2) document.getElementById("amazon_price").innerHTML = "$50.00"; 
             else if(gc.Amazon.type==3)document.getElementById("amazon_price").innerHTML = "$100.00";
+            $('#close-giftcard').show();
         }
     else  {
         document.getElementById("amazon_num").innerHTML = "";
@@ -746,6 +748,7 @@ function displayOrder(){
              if(gc.Bookstore.type==1) document.getElementById("bs_price").innerHTML = "$25.00";
             else if(gc.Bookstore.type==2) document.getElementById("bs_price").innerHTML = "$50.00"; 
             else if(gc.Bookstore.type==3)document.getElementById("bs_price").innerHTML = "$100.00";
+            $('#close-giftcard').show();
         }
      else  {
         document.getElementById("bs_num").innerHTML = "";
@@ -757,6 +760,7 @@ function displayOrder(){
             if(gc.Chipotle.type==1) document.getElementById("chip_price").innerHTML = "$15.00";
             else if(gc.Chipotle.type==2) document.getElementById("chip_price").innerHTML = "$25.00"; 
             else if(gc.Chipotle.type==3) document.getElementById('chip_price').innerHTML = "$50.00"
+            $('#close-giftcard').show();
         }
     else  {
         document.getElementById("chip_num").innerHTML="";
@@ -767,6 +771,7 @@ function displayOrder(){
             if(gc.Visa.type==1) document.getElementById("visa_price").innerHTML = "$25.00";
             else if(gc.Visa.type==2) document.getElementById("visa_price").innerHTML = "$50.00"; 
             else if(gc.Visa.type==3)document.getElementById("visa_price").innerHTML = "$100.00";
+            $('#close-giftcard').show();
         }
       else  {
         document.getElementById("visa_num").innerHTML="";
