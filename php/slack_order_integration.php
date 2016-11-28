@@ -45,7 +45,7 @@
     $result = mysqli_query($connection, $sql) or die("Error in Selecting " . mysqli_error($connection));
     $products = array();
     while($row =mysqli_fetch_assoc($result)){
-        var_dump($row);
+   
         if($row['order_description']!=""){
             $fields[] = array(
             "title" => "cake type",
@@ -92,13 +92,13 @@ $attachment = array(
 $message = "New Order"; 
 $room = "orders"; 
 $icon = ":smile:"; 
-$data = "payload=" . json_encode(array(         
+$data = json_encode(array(         
         "channel"       =>  "#{$room}",
         "text"          =>  $message,
         "icon_emoji"    =>  $icon,
         "attachments"   =>  array($attachment)
     ),JSON_PRETTY_PRINT);
-var_dump($data);
+
 
 $url = "https://hooks.slack.com/services/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";
          
@@ -106,7 +106,7 @@ $url = "https://hooks.slack.com/services/T2UHMCR5H/B2UMK1Y04/QlmSXVYpkaGLF589vxt
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+curl_setopt($ch, CURLOPT_POSTFIELDS, array('payload'=> $data));
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 $result = curl_exec($ch);

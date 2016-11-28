@@ -55,7 +55,7 @@ $attachment = array(
 $message = "New Reminder"; 
 $room = "contact"; 
 $icon = ":tada:"; 
-$data = "payload=" . json_encode(array(         
+$data = json_encode(array(         
         "channel"       =>  "#{$room}",
         "text"          =>  $message,
         "icon_emoji"    =>  $icon,
@@ -69,7 +69,7 @@ $url = "https://hooks.slack.com/services/T2UHMCR5H/B33GLHT6J/056XkNIITaEMdEzN7wQ
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+curl_setopt($ch, CURLOPT_POSTFIELDS, array('payload'=> $data));
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 $result = curl_exec($ch);
