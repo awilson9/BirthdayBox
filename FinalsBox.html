@@ -31,6 +31,7 @@
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
   <link rel="stylesheet" href="css/uploadstyle.css">
   <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
   <link rel="stylesheet" href="css/jquery.fileupload.css">
@@ -43,7 +44,7 @@
   
   <script>
     (function() {
-     Stripe.setPublishableKey('pk_live_bCpriXLtckaGut1M5HOVnST2');
+     Stripe.setPublishableKey('pk_test_mWpgiJnuMysQVf79fO7RnJH1');
    })();
  </script>
  <script>
@@ -85,13 +86,12 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
     <![endif]-->
 
     <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
+    <link type='text/css' rel='stylesheet' href="css/finalsbox.css">
     <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
     
 
   </head>
-
 
   <body>
 
@@ -102,7 +102,7 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
     inset 0px 11px 8px -10px #CCC,
     inset 0px -11px 8px -10px #CCC;background:white;height:60px; ">
     <div class="trigger-menu"  style="position:absolute;left:10px;top:5px"><img height="45px"  id="menu-icon" width="45px" src="../img/menu-icon.png"><span class="amatic">Menu</span></div>
-    <img height="45px" class="trigger-menu" style="position:relative;top:10px" width="172px" src="../img/BirthdayBoxred.png" alt="Logo">
+    <img height="45px" class="trigger-menu" style="position:relative;top:5px" width="172px" src="../img/FinalsBoxText.png" alt="Logo">
     <div class="trigger-menu" id="close-menu" style="position:absolute;top:15px;right:10px;display:none">X</div>
   </div>
   
@@ -115,76 +115,40 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
     <li><a id="review-link" href="https://www.bdayb.com/#review">Contact Us</a></li>
   </ul>
 </div>
+<header>
+<p class="amatic image-text">Birthdays Away From Home Just Got Better<br>
+<a id=""  href="order.html"><button type="button" class="btn btn-primary go-to-top  raised"><p class="amatic" style="font-size:30px;margin:0">Scroll To Order</p></button></a>
+</p></header>
 
 
-<div class="container marketing">
+<div class="container">
+  <div class="dessert">
 
+  <div class="jumbotron">
+    <h1 class="center amatic">Choose Your Baked Good</h1>
+    <h3 class="center amatic">Donuts/Sandwiches will be random flavors</h3>
+  </div>
 
-
-  <div class="size" id="size">
-    <div class="jumbotron"><h1 class="center amatic">Choose your Size</h1></div>
-    
-    <div class="container marketing middle" id="container-size">
-     
-     <!-- Three columns of text below the carousel -->
-     <div class="row">
-       <div class="col-sm-4 col-xs-12">
-         <button type="button" id="Single" class="clear_btn go-to-top size-treat" onclick="processSize('Individual')">
-           <img class="img-square school" src="../img/individual.png" alt="Single Sized Box" >
-
-         </button>
-         <p><h6>Individual - $20</h6>Serves just the birthday boy/girl</p>
-         
-       </div><!-- /.col-lg-4 -->
-       <div class="col-sm-4 col-xs-12" id="Double">
-         <button type="button" class="clear_btn go-to-top size-treat" onclick="processSize('Double')">
-           <div style="position:relative">
-             <img class="img-square school" src="../img/double.png" alt="Double Sized Box" >
-           </div></button>
-           <p><h6>Double - $30</h6>Serves the birthday boy/girl and a friend</p>
-
-         </div><!-- /.col-lg-4 -->
-         <div class="col-sm-4 col-xs-12" id="Group">
-           <button type="button" onclick="processSize('Group')"disabled class="clear_btn go-to-top size-treat" data-toggle="collapse" alt="Group Sized box">
-            <div style="position:relative">
-             <img class="img-square school grey" id="group" src="../img/group.png"/>
-             <img class="img-square school" id="group-banner" src="../img/comingSoon.png"/>
-           </div>
-           
-
-         </button>
-         <p><h6>Group</h6>Serves the birthday boy/girl and a group of friends</p>
-         
-       </div><!-- /.col-lg-4 -->
-     </div><!-- /.row --> 
-     
-   </div>
- </div>
-
- 
- <div class="treat" id="treat">
-   <div class="jumbotron"><h1 class="center amatic">Choose your Treat</h1></div>
-   <div class="container marketing middle" id="container-treat">
-     
-     <!-- Three columns of text below the carousel -->
-     <div class="row">
-       <div class="col-sm-4 col-xs-12">
-        <button type="button" id="Cake"  class="clear_btn" data-toggle="collapse" data-target="#cake-options">
-          <img class="img-square" id="cake" src="/img/cake.jpg" alt="Cake" width="200" height="200">
-          <img class="img-square overlay-cake" src="/img/cake.jpg" alt="Cake" width="200" height="200">
-        </button>
-        <h6 id="cake-size">Individual Cake</h6>
-
-        <div id="cake-options" class="collapse">
-          <h5>Choose your flavor</h5>
-          Cake Type
-          <select name="Cake Type" id="cake_type">
+  <div class="col-sm-6">
+    <form id="dessert-form" role="form" class="form-horizontal">
+      <div class="form-group">
+        <label for="dessert-choice" class="control-label">Baked Good Choice</label>
+         <select class="form-control" name="dessert" id="dessert-choice">
+            <option disabled selected value> -- select a baked good -- </option>
+            <option value="Cake">Cake</option>
+            <option value="Donuts">Donuts</option>
+            <option value="Coookies">Cookies</option>
+          </select>
+      </div>
+      <div class="form-group collapse" id="cake-flavor">
+        <label for="cake-type" class="control-label">Cake Type</label>
+          <select name="cake-type" class="form-control" id="cake-type">
             <option disabled selected value> -- select an option -- </option>
             <option value="Chocolate">Chocolate</option>
             <option value="Vanilla">Vanilla</option>
           </select><br>
-          Frosting Type
-          <select name="Frosting Type" id="cake_frosting">
+          <label for="frosting-type" class="control-label">Frosting Type</label>
+          <select name="frosting-type" class="form-control" id="frosting-type">
             <option disabled selected value> -- select an option -- </option>
             <option value="Chocolate">Chocolate</option>
             <option value="Vanilla">Vanilla</option>
@@ -193,145 +157,118 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
             <option value="Caramel">Caramel</option>
             <option value="Peanut Butter">Peanut Butter</option>
             <option value="Coffee">Coffee</option>
-          </select><br><br>
-          
-          
-        </div>
-        
-        
-        <p> 
+          </select><br>
 
-          This two-layer personal mini cake comes with your choice of cake and frostings. With wholesome, local, and organic ingredients, this treat is both natural and delicious. <br><br><br><br>
-        </p>
-        
-      </div><!-- /.col-lg-4 -->
-      <div class="col-sm-4 col-xs-12">
-       <button type="button" id="Donut" class="clear_btn treat-extras" data-toggle="collapse" data-target="#demo-donut" onclick="processTreat(0)">
-         <div style="position:relative">
-          <img class="img-square" id="donut" src="/img/donut.png" alt="Donut" width="200" height="200">
-          <img class="img-square overlay-donut" src="/img/donut.png" alt="Donut" width="200" height="200">
-          
-        </div>
-      </button>
-      
-      
-      
-      <p><h6>Doughnuts <span id="num_donut">(x2)</span></h6>Feeling adventurous? Randomly selected doughnut flavors will be selected from weekly specials. Doughnuts are fried in coconut oil and are made fresh daily.
-      </p>
-
-      
-    </div><!-- /.col-lg-4 -->
-    <div class="col-sm-4 col-xs-12">
-     <button type="button" id="Cookie" class="clear_btn treat-extras" data-toggle="collapse" data-target="#demo-cook" onclick="processTreat(1)">
-       <div style="position:relative">
-        <img class="img-square" id="cookie" src="/img/cookie.jpg" alt="Cookie" width="200" height="200">
-        <img class="img-square overlay-cookie grey" src="/img/cookie.jpg" alt="Cookie" width="200" height="200">
-        
       </div>
-    </button>
-    
 
-    <p><h6>Cookie Sandwich <span id="num_cook">(x2)</span></h6>Sandwiched between two fresh baked cookies, this creamy filling made from local Wisconsin dairy is sure to send your taste buds into heaven. Flavors vary by week.</p>
-    
-  </div><!-- /.col-lg-4 -->
-  
-</div><!-- /.row --> 
+
+      <div class="form-group">
+        <label for="dessert-allergies" class="control-label">Any Allergies?</label>
+        <input type="text" class="form-control" id="dessert-allergies" name="allergies" placeholder="Enter Allergies Here">
+      </div>
+    </form> 
+  </div>
+
+  </div>
 </div>
-</div> 
-
-
-<div class="extras toggle" id="extras">
-  <div class="jumbotron"><h1 class="center amatic">Add an Extra Gift Card!</h1></div>
-  <div class="container marketing middle" id="container-extras">
-    
-    <!-- Three columns of text below the carousel -->
-    <div class="row">
-      <div class="col-xs-12 col-sm-6 extra-container">
-        <button type="button" id="Bookstore" class="clear_btn" data-toggle="collapse" data-target="#bkstr">
-          <img class="img-square" id="bs-img" src="/img/bookstore.jpg" alt="Bookstore image" width="200" height="200">
-          <img class="img-square overlay-bs" src="/img/bookstore.jpg" alt="Bookstore image" width="200" height="200">
-        </button>
-        <div id="bkstr" class="collapse">
-          <button type="button" class="btn btn-primary raised go-to-top extras-message-screen" id="bs-25"onclick="processGiftCard('Bookstore', '1')" >$25</button>
-          <button type="button" class="btn btn-primary raised go-to-top extras-message-screen overlay" id="bs-25-overlay" onclick="processGiftCard('Bookstore', '1')" >$25</button>
-          
-          <button type="button" class="btn btn-primary raised go-to-top extras-message-screen" id="bs-50"onclick="processGiftCard('Bookstore', '2')" >$50</button>
-          <button type="button" class="btn btn-primary raised go-to-top extras-message-screen overlay"  id="bs-50-overlay"onclick="processGiftCard('Bookstore', '2')" >$50</button>
-          
-          <button type="button" class="btn btn-primary raised go-to-top extras-message-screen" id="bs-100" onclick="processGiftCard('Bookstore', '3')" >$100</button>
-          <button type="button" class="btn btn-primary raised go-to-top extras-message-screen overlay" id="bs-100-overlay" onclick="processGiftCard('Bookstore', '3')" >$100</button>
-          
-        </div>
-        
-        
-      </div><!-- /.col-lg-3 -->
-      <div class="col-xs-12 col-sm-6 extra-container">
-        <button type="button" id="Amazon" class="clear_btn" data-toggle="collapse" data-target="#amzn">
-          <img class="img-square" id="amazon-img" src="/img/amazon.png" alt="Amazon Logo" width="200" height="200">
-          <img class="img-square overlay-amazon" src="/img/amazon.png" alt="Amazon Logo" width="200" height="200">
-        </button>
-        <div id="amzn" class="collapse">
-          <button type="button" id="amazon-25" class="btn btn-primary raised go-to-top extras-message-screen" onclick="processGiftCard('Amazon', '1')">$25</button>
-          <button type="button" id="amazon-25-overlay" class="btn btn-primary raised go-to-top extras-message-screen overlay" onclick="processGiftCard('Amazon', '1')">$25</button>
-          
-          <button type="button" id="amazon-50" class="btn btn-primary raised go-to-top extras-message-screen" onclick="processGiftCard('Amazon', '2')">$50</button>
-          <button type="button" id="amazon-50-overlay" class="btn btn-primary raised go-to-top extras-message-screen overlay" onclick="processGiftCard('Amazon', '2')">$50</button>
-          
-          <button type="button" id="amazon-100" class="btn btn-primary raised go-to-top extras-message-screen" onclick="processGiftCard('Amazon', '3')">$100</button>
-          <button type="button" id="amazon-100-overlay" class="btn btn-primary raised go-to-top extras-message-screen overlay" onclick="processGiftCard('Amazon', '3')">$100</button>
-          
-        </div>
-        
-        
-      </div><!-- /.col-lg-3 -->
+<div class="container">
+  <div class="treats">
+    <div class="jumbotron">
+    <h1 class="center amatic">Pick Some Treats!</h1>
+    <h3 class="center amatic">These will be included at no extra charge</h3>
+  </div>
+  <div class="center">
+  <form id="treat-form" role="form" class="form-horizontal">
+  <div class="row">
+   <div class="col-xs-2"></div>
+      <div class="form-group col-xs-8">
+        <label for="treat-1" class="control-label col-xs-3">Treat 1</label>
+        <div class="col-xs-9">
+         <select class="form-control" name="treat-1" id="treat-1">
+            <option disabled selected value> -- select your first treat -- </option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+          </select>
+          </div>
+      </div>
     </div>
     <div class="row">
-      <div class="col-xs-12 col-sm-6 extra-container">
-        <button type="button" id="Visa" class="clear_btn" data-toggle="collapse" data-target="#visa">
-          <img class="img-square" id="visa-img" src="/img/visa.jpg" alt="Visa Gift Card" width="200" height="200">
-          <img class="img-square overlay-visa" src="/img/visa.jpg" alt="Visa Gift Card" width="200" height="200">
-        </button>
-        <div id="visa" class="collapse">
-          <button type="button" id="visa-25" class="btn btn-primary raised center go-to-top extras-message-screen" onclick="processGiftCard('Visa', '1')">$25</button>
-          <button type="button" id="visa-25-overlay" class="btn btn-primary raised center go-to-top extras-message-screen overlay" onclick="processGiftCard('Visa', '1')">$25</button>
-          
-          <button type="button" id="visa-50" class="btn btn-primary raised center go-to-top extras-message-screen" onclick="processGiftCard('Visa', '2')">$50</button>
-          <button type="button" id="visa-50-overlay" class="btn btn-primary raised center go-to-top extras-message-screen overlay" onclick="processGiftCard('Visa', '2')">$50</button>
-          
-          <button type="button" id="visa-100" class="btn btn-primary raised center go-to-top extras-message-screen" onclick="processGiftCard('Visa', '3')">$100</button>
-          <button type="button" id="visa-100-overlay" class="btn btn-primary raised center go-to-top extras-message-screen overlay" onclick="processGiftCard('Visa', '3')">$100</button>
-          
-        </div>
-        
-        
-      </div><!-- /.col-lg-3 -->
+     
+      <div class="col-xs-2"></div>
+      <div class="form-group col-xs-8">
+        <label for="treat-2" class="control-label col-xs-3">Treat 2</label>
+        <div class="col-xs-9">
+         <select class="form-control" name="treat-2" id="treat-2">
+            <option disabled selected value> -- select your second treat -- </option>
+            <option value=""></option>
+            <option value=""></option>
+            <option value=""></option>
+          </select>
+          </div>
+      </div>
+   </div>
+   </form>
+   </div>
 
-      <div class="col-xs-12 col-sm-6 extra-container">
-        <button type="button" id="Chipotle" class="clear_btn" data-toggle="collapse" data-target="#chip">
-          <img class="img-square" id="chip-img" src="/img/chipotle.jpg" alt="Chipotle Gift Card" width="200" height="200">
-          <img class="img-square overlay-chip" src="/img/chipotle.jpg" alt="Chipotle Gift Card" width="200" height="200">
-        </button>
-        <div id="chip" class="collapse">
-          <button type="button" id="chip-15" class="btn btn-primary raised go-to-top extras-message-screen" onclick="processGiftCard('Chipotle', '1')">$15</button>
-          <button type="button" id="chip-15-overlay" class="btn btn-primary raised go-to-top extras-message-screen overlay" onclick="processGiftCard('Chipotle', '1')">$15</button>
-          
-          <button type="button" id="chip-25" class="btn btn-primary raised go-to-top extras-message-screen" onclick="processGiftCard('Chipotle', '2')">$25</button>
-          <button type="button" id="chip-25-overlay" class="btn btn-primary raised go-to-top extras-message-screen overlay" onclick="processGiftCard('Chipotle', '2')">$25</button>
-          
-          <button type="button" id="chip-50" class="btn btn-primary raised go-to-top extras-message-screen" onclick="processGiftCard('Chipotle', '3')">$50</button>
-          <button type="button" id="chip-50-overlay" class="btn btn-primary raised go-to-top extras-message-screen overlay" onclick="processGiftCard('Chipotle', '3')">$50</button>
-        </div>
-        
-
-        
-      </div><!-- /.col-lg-3 -->
-    </div><!-- /.row -->          
+ 
+    
   </div>
-</div> 
 
 
-<div class="message-screen toggle" id="message-screen">
- <div class="jumbotron">
+
+</div>
+<div class="container">
+  <div class="gift-card">
+    <div class="jumbotron">
+    <h1 class="center amatic">Want to Include a Gift Card?</h1>
+    </div>
+    <form id="gift-card-form">
+      <div class="row center">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-8">
+          <label for="yes" class="control-label col-xs-12"><input type="checkbox" value="" id="yes-gift-card"> Yes! My Student Would Love A Gift Card</label>
+
+        </div>
+      </div>
+      <div class="collapse" id="gift-card-options">
+      
+        <div class="row">
+        <div class="col-xs-4"></div>
+        <div class="col-xs-4">
+         <select class="form-control" name="type" id="gift-card-type">
+            <option disabled selected value> -- Type -- </option>
+            <option value="S">Starbucks</option>
+            <option value="C">Chipotle</option>
+            <option value="B">Bookstore</option>
+          </select>
+          </div>
+      </div>
+
+      <div class="row">
+      <div class="col-xs-4"></div>
+      <div class="col-xs-4">
+           <select class="form-control" name="amount" id="gift-card-amount">
+            <option disabled selected value> -- Amount -- </option>
+            <option value="10">$10</option>
+            <option value="25">$25</option>
+          </select>
+          </div>
+      </div>
+      </div>
+      <div class="row center">
+      <div class="col-xs-2"></div>
+      <div class="col-xs-8">
+      <label for="no" class="control-label col-xs-12"><input type="checkbox" value="" id="no-gift-card"> No thanks</label>
+      </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card">
+  <div class="jumbotron">
    <h1 class="center amatic">Create a Personalized Card!<br></h1>
  </div>
  <div id="card-image">
@@ -399,14 +336,21 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
  
 </div>
 </div>
+</div>
 
-<div class="delivery-info toggle" id="delivery-info">
- <div class="jumbotron"><h1 class="amatic center">Delivery information:</h1></div>
+<div class="container">
+<div class="jumbotron"><h1 class="amatic center">Delivery information:</h1></div>
  <div id="delivery-container" class="container">
   
   <form id="delivery_info" role="form" class="form-horizontal">
+   <div class="form-group">
+      <label for="dp1" class="control-label col-xs-12 col-sm-3">Delivery Date:</label>
+      <div class="col-xs-12 col-sm-6">
+        <input type="text" class="form-control info" value="" name="date" data-date-format="mm/dd/yy" readonly="readonly" id="dp1" >
+      </div>
+    </div>
     <div class="form-group">
-      <label for="name_deliv" class="control-label col-xs-12 col-sm-3">Who is this for?</label>
+      <label for="name_deliv" class="control-label col-xs-12 col-sm-3">Recipient Name: </label>
       <div class="col-sm-3">
         <input type="text" class="form-control info" id="fname_deliv" name="fname_deliv" placeholder="First name">
       </div>
@@ -415,27 +359,17 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
       </div>
     </div>
     <div class="form-group">
-      <label for="age" class="control-label col-xs-12 col-sm-3">What age are they turning?</label>
+      <label for="phone-number" class="control-label col-xs-12 col-sm-3">Recipient Phone Number: </label>
       <div class="col-xs-12 col-sm-6">
-        <input type="number" class="form-control info" id="age" name="age" placeholder="Enter the age here">
+        <input type="number" class="form-control info" id="phone-number" name="phone-number" placeholder="XXXXXXXXXX">
       </div>
     </div>
+
+   
     <div class="form-group">
-      <label for="allergy" class="control-label col-xs-12 col-sm-3">Are there any allergies we should be aware of?</label>
-      <div class="col-xs-12 col-sm-6">
-        <input type="text" class="form-control" id="allergy" name="allergy" placeholder="Enter any allergies here">
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="dp1" class="control-label col-xs-12 col-sm-3">What day would you like it delivered? (valid dates: 2 days from now - 12/20/16 and 1/20/17 - 5/15/17</label>
-      <div class="col-xs-12 col-sm-6">
-        <input type="text" class="form-control info" value="" data-date-format="mm/dd/yy" readonly="readonly" id="dp1" >
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="autocomplete" class="control-label col-xs-12 col-sm-3">Where would you like it delivered?</label>
+      <label for="autocomplete" class="control-label col-xs-12 col-sm-3">Delivery Address: </label>
       <div id="locationField" class="col-sm-6">
-        <input id="autocomplete" class="form-control info" placeholder="Enter delivery address" onFocus="geolocate()" type="text"/>
+        <input id="autocomplete" class="form-control info" name="address" placeholder="Enter delivery address" onFocus="geolocate()" type="text"/>
       </div>
     </div>
     <div id="address">
@@ -443,23 +377,18 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
       <div class="form-group">
         <label class="control-label col-xs-12 col-sm-3">Apt #</label>
         <div class="col-sm-6">
-          <input class="form-control" id="apt"/>
+          <input class="form-control" name="apt" id="apt"/>
         </div>
       </div>  
     </div>                
-    <div class="form-group">
-      <label for="phone-number" class="control-label col-xs-12 col-sm-3">What is the recipient's phone number?</label>
-      <div class="col-xs-12 col-sm-6">
-        <input type="number" class="form-control info" id="phone-number" name="phone-number" placeholder="XXXXXXXXXX">
-      </div>
-    </div>
+    
   </form>
 </div>
+
+
 </div>
-
-
-<div class="summary toggle" id="summary">
-  <div class="container" id="summary-container">
+<div class="container">
+  <div class="order-summary">
    
     <br>
     <legend class="amatic" style="font-size:20px">Order Summary:</legend>
@@ -530,7 +459,7 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
        <div class="form-group">
          <label class="col-xs-3 control-label">Expiration</label>
          <div class="col-xs-3">
-           <select class="form-control card-expiry-month" name="Expiration Month" id="card-expiry-month">
+           <select class="form-control card-expiry-month" id="card-expiry-month">
             <option disabled selected value> -- select a month -- </option>
             <option value="01">01</option>
             <option value="02">02</option>
@@ -547,7 +476,7 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
           </select>
         </div>
         <div class="col-xs-3">
-          <select name="Expiration Year" class="form-control card-expiry-year" id="card-expiry-year">
+          <select class="form-control card-expiry-year" id="card-expiry-year">
             <option disabled selected value> -- select a year -- </option>
             <option value="2016">2016</option>
             <option value="2017">2017</option>
@@ -580,6 +509,12 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
          <input type="text" class="form-control card-zip" id="card-zip" placeholder="Cardholder Zip">
        </div>
      </div>
+     <div class="form-group">
+      <label class="control-label col-xs-3" for="special">Any Comments or Special Requests?</label>
+      <div class="col-xs-6">
+      <input type="text" class="form-control" id="special" name="comments" placeholder="Enter comments here">
+      </div>
+     </div>
 
      <div class="form-group">
        <div class="col-sm-offset-3 col-sm-9">
@@ -588,22 +523,13 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
      </div>
    </fieldset>
  </form>
-</div>               
-</div>
-</div>
-<div class="progress-container">
- <div style="margin-left:5%"><h2>Progress
-  <button type="button" class="btn btn-primary go-to-top raised" disabled id="left" onclick="navigate(true)"><span class="glyphicon glyphicon-arrow-left"></span> Back</button>
-  <button type="button" class="btn btn-primary go-to-top raised" onclick="navigate(false)" id="right">Next <span class="glyphicon glyphicon-arrow-right"></span></button></h2></div>
-  <div class="progress">
-    <div class="progress-bar prog" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:0%">
-    </div>
-  </div>
-</div>
-<!-- end of summary div -->
+ </div>
+</div>   
+
+
 <script type="text/javascript" src="js/datepicker/js/bootstrap-datepicker.js"></script>
-<script src="js/order.js"></script>
-<script src="js/process.js"></script>
+<script src="js/FinalsBox.js"></script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script id="template-upload" type="text/x-tmpl">
@@ -713,5 +639,4 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
 <script src="/js/map.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbaxNxo-GCUtmb8MNEpmGuf46Rm9lpUDs&libraries=places&callback=initAutocomplete"
 async defer></script>
-
 </body>
