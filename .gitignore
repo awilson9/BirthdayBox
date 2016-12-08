@@ -20,3 +20,5 @@
 Vagrantfile
 
 php/config.php
+
+php/files

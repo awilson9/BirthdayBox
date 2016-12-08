@@ -18,7 +18,7 @@ $order_ID = $_POST['orderID'];
 $amountQuery =  "SELECT order_price FROM ORDERS WHERE order_ID='$order_ID' limit 1";
 $amountObject = mysqli_query($conn, $amountQuery)or die(mysql_error());
 $amount = $amountObject->fetch_object()->order_price;
-$email = $_POST['email'];
+$email = $_POST['email-address'];
 
 
 try {
@@ -26,7 +26,8 @@ try {
         'amount' => $amount, // Amount in cents!
         'currency' => 'usd',
         'source' => $token,
-        'description' => 'description'
+        'description' => 'description',
+        'receipt_email' => $email
     ));
 } catch (\Stripe\Error\Card $e) {
 	echo 'The charge was declined, please check the CVC and Zip Code again and make sure javascript is enabled';

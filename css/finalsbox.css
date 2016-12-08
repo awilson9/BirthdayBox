@@ -1,0 +1,138 @@
+header{
+  background: url(https://www.bdayb.com/img/homepage.png) no-repeat left top fixed;;
+    -webkit-background-size: contain;
+    background-size: contain;
+    height:100vh;
+    width:100%;
+
+  
+    background-color:#939393;
+}
+
+body{
+	background-color:#f7f7f7;
+}
+@media(max-width: 960px){
+  header{
+    background-size:contain;
+  }
+}
+
+.container{
+	height:100vh;
+	width:100vw;
+	display:flex;justify-content:center;align-items:center;
+}
+
+.jumbotron{
+  background-color:#f7f7f7;
+  margin:0px;
+  padding:0px;
+}
+
+.center{
+  padding-top:10px;
+  text-align:center;
+}
+
+.dropdown {
+    position: fixed;
+    display: inline-block;
+    width:100%;
+    z-index:10;
+    top:0px;
+    overflow:hidden;
+    text-align:center;
+       
+}
+
+.menu{
+  color:#AE0000;
+  font-size:50px;
+  opacity:1.0;
+
+}
+a{
+  color:#AE0000;
+}
+.trigger-menu{
+  cursor:pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position:fixed;
+    width:100vw;
+    height:90vh;
+
+    z-index: 150;
+    background:rgba(255,255,255,0.9);
+
+    text-align:center;
+    padding-top:10%;
+}
+
+.amatic{
+  font-family:"Amatic SC";
+}
+
+.btn-primary{
+  background-color:#AE0000;
+  border-color:#4D0000;
+  color:#f7f7f7;
+}
+.btn-primary:hover{
+  background-color:#800000;
+  border-color:#4D0000;
+}
+.btn-primary:active:focus{
+  background-color:#800000;
+  border-color:#4D0000;
+}
+
+.btn-primary:active{
+  background-color:#800000;
+  border-color:#4D0000;
+}
+.btn-primary:focus{
+  background-color:#800000;
+  border-color:#4D0000;
+}
+.btn:focus,.btn:active {
+   outline: #ff8080 !important;
+}
+.btn-primary.raised {
+  box-shadow: 0 2px 0 0 #4d0000;
+}
+
+.btn-primary.raised:active, .btn-primary.raised.active {
+  background: #800000;
+  box-shadow: none;
+  margin-bottom: -3px;
+  margin-top: 3px;
+}
+.image-text{
+  position:absolute;
+  text-align:center;
+  top: 50px;
+  right:10px;
+  width: 50%;
+  font-size:70px;
+  color:#AE0000;
+}
+ul{
+  list-style-type: none;
+}
+
+@media(max-width:600px){
+  .image-text{
+    font-size:60px;
+    top:60%;
+    width:90%;
+  }
+}
+
+.input-warning{
+  background:red;
+  opacity:.5;
+}
