@@ -111,7 +111,7 @@ else{
 
 }
 
-$queries[] =  "INSERT INTO ORDER_DETAILS (product_FK, order_FK, order_description, unit_price) VALUES ('$slice_id', '$id', '$description')";
+$queries[] =  "INSERT INTO ORDER_DETAILS (product_FK, order_FK, order_description) VALUES ('$slice_id', '$id', '$description')";
 $queries[] = "UPDATE ORDERS SET order_price='$price' WHERE order_ID='$id' limit 1";
 
 //todo treat options (once figured out)
