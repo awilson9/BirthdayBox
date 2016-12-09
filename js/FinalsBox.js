@@ -160,7 +160,7 @@ function stripeResponseHandler(status, response) {
 	  var order_id = 0;
 	  var dessert_info = $('#dessert-form').serialize();
 	  var hasgc =false;
-	 if($('#yes-gift-card').checked) hasgc = true;
+	 if($('#yes-gift-card')[0].checked) hasgc = true;
 	  var giftcard_info = $('#gift-card-form').serialize();
 
 	  var delivery_info = $("#delivery_info").serialize();

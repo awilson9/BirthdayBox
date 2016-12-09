@@ -117,7 +117,7 @@ else if($item==="Cookies"){
 }
 else{
 	$slice_id =	$Cake;
-	$description = $_POST['frosting type'] . " frosting " . $_POST['cake-type'] . " Cake";
+	$description = $_POST['frosting-type'] . " frosting " . $_POST['cake-type'] . " Cake";
 	$receipt_description = $receipt_description . "a " . $description;
 
 }
