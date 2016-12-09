@@ -129,14 +129,14 @@ function validateForms(){
 		}
 		});
 		if(needFilled.length==0){
-			return true;
+			return false;
 		}
 		else{
 			var a = needFilled[0];
 			  $('html, body').animate({
        			 scrollTop: ($('#'+needFilled[0].id).offset().top-100)
     			}, 2000);
-			  return false;
+			  return true;
 		}
 	}
 
