@@ -22,7 +22,7 @@ $email = $_POST['email-address'];
 $allergy = $_POST['allergies'];
 $comment = $_POST['comment'];
 
-$query = "INSERT INTO ORDERS (order_address, order_apt, order_phone, order_first, order_last, order_message, order_img, order_bday, order_name, order_email, order_date, order_allergy, order_comment) VALUES ('$address', '$apt_no','$phone', '$fname', '$lname', '$message', '$img', '$date', '$name', '$email', now(), '$allergy', $comment)";
+$query = "INSERT INTO ORDERS (order_address, order_apt, order_phone, order_first, order_last, order_message, order_img, order_bday, order_name, order_email, order_date, order_allergy, order_comment) VALUES ('$address', '$apt_no','$phone', '$fname', '$lname', '$message', '$img', '$date', '$name', '$email', now(), '$allergy', '$comment')";
 
 
 
