@@ -25,7 +25,7 @@ $allergy = $_POST['allergy'];
 
 
 
-$query = "INSERT INTO ORDERS (order_address, order_apt, order_zip, order_phone, order_first, order_last, order_message, order_img, order_age, order_bday, order_name, order_email, order_date, order_allergy) VALUES ('$address', '$apt_no', '$zip', '$phone', '$fname', '$lname', '$message', '$img', '$age', '$date', '$name', '$email', now(), '$allergy')";
+$query = "INSERT INTO ORDERS (order_address, order_apt, order_phone, order_first, order_last, order_message, order_img, order_age, order_bday, order_name, order_email, order_date, order_allergy) VALUES ('$address', '$apt_no', '$phone', '$fname', '$lname', '$message', '$img', '$age', '$date', '$name', '$email', now(), '$allergy')";
 
 
 if(mysqli_query($conn, $query)){
