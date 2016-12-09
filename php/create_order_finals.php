@@ -26,8 +26,7 @@ $query = "INSERT INTO ORDERS (order_address, order_apt, order_phone, order_first
 
 
 if(mysqli_query($conn, $query)){
-	$last_ID = mysqli_insert_id($conn);
-	echo $last_ID;
+
 }else{
 	"Error: " . $query . "<br>" . mysqli_error($conn);
 }

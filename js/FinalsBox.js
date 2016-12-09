@@ -133,6 +133,8 @@ function stripeResponseHandler(status, response) {
 
 	  var order_id = 0;
 	  var dessert_info = $('#dessert-form').serialize();
+	  var hasgc =false;
+	 if($('#gift-card-type').val()!=null) hasgc = true;
 	  var giftcard_info = $('#gift-card-form').serialize();
 
 	  var delivery_info = $("#delivery_info").serialize();
@@ -147,7 +149,7 @@ function stripeResponseHandler(status, response) {
 	  //var email=$('#email-address').val();
 	  //var date = $('#dp1').val();
 
-	  $.post('./php/create_order_finals.php', dessert_info + '&' + giftcard_info + '&' + delivery_info + '&' + treat_info + '&' + personal_message +'&' + 'img=' + imgURL + '&' + f.serialize(), function(data){
+	  $.post('./php/create_order_finals.php', dessert_info + '&' + giftcard_info + '&' + delivery_info + '&' + treat_info + '&' + personal_message +'&' + 'img=' + imgURL + '&' + f.serialize() + '&hasGC=' + hasgc , function(data){
 	  	order_id = Number(data);
 	  	processCharge(order_id);
 	  }); 
