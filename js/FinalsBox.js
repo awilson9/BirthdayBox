@@ -186,21 +186,16 @@ function stripeResponseHandler(status, response) {
 	  			$('#payment-errors').text(data);
 	  			if(data==="success") {
 	  				sendSlack(id);
-	  				sendEmail(id);
 	  			}
 	  			else{
 	  				$('#submitBtn').prop('disabled', false);
 	  			}
 		});
-	   }
-	   function sendEmail(id){
-	   		$.post('./php/email-order.php', 'orderID=' + id,function(data){
-	   			window.onbeforeunload = null;
-	   			window.location.replace("http://bdayb.com/success.html");
-	   });
-	   	}
+	   
 	   	function sendSlack(id){
 	   		$.post('./php/slack_order_integration.php', 'orderID=' + id,function(data){
+	   			window.onbeforeunload = null;
+	   			window.location.replace("http://bdayb.com/success.html");
 	   });
 	   	}
 	}
