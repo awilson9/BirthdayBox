@@ -15,18 +15,22 @@ if(!$conn){
 
 $token = $_POST['stripeToken'];
 $order_ID = $_POST['orderID'];
-$amountQuery =  "SELECT order_price FROM ORDERS WHERE order_ID='$order_ID' limit 1";
+$amountQuery =  "SELECT order_price, order_description FROM ORDERS WHERE order_ID='$order_ID' limit 1";
 $amountObject = mysqli_query($conn, $amountQuery)or die(mysql_error());
 $amount = $amountObject->fetch_object()->order_price;
+$description = $amountObject->fetch_object()->order_description;
 $email = $_POST['email-address'];
 
+if($description===""||$description==null){
+    $description = "1 Birthday Box";
+}
 
 try {
     $charge = \Stripe\Charge::create(array(
         'amount' => $amount, // Amount in cents!
         'currency' => 'usd',
         'source' => $token,
-        'description' => '1 Birthday Box',
+        'description' => $description,
         'receipt_email' => $email
     ));
 } catch (\Stripe\Error\Card $e) {

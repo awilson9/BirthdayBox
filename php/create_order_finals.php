@@ -60,26 +60,33 @@ $sb_25 = 22;
 $hasgc = $_POST['hasGC'];
 $gcID = 0;
 $price = 2500;
+$gc_description = "";
 if($hasgc==="true"){
 	$type = $_POST['type'];
 	$amount = $_POST['amount'];
 	if($type==="S"&&$amount==="10"){
 		$gcID = $sb_10;
+		$gc_description = $gc_description . " and 1 $10 Starbucks Gift Card";
 	}
 	else if($type==="S"){
 		$gcID = $sb_25;
+		$gc_description = $gc_description . " and 1 $25 Starbucks Gift Card";
 	}
 	else if($type==="B"&&$amount==="10"){
 		$gcID = $bs_10;
+		$gc_description = $gc_description . " and 1 $10 Bookstore Gift Card";
 	}
 	else if($type==="B"){
 		$gcID = $bs_25;
+		$gc_description = $gc_description . " and 1 $25 Bookstore Gift Card";
 	}
 	else if($type==="C"&&$amount==="10"){
 		$gcID = $chipotle_10;
+		$gc_description = $gc_description . " and 1 $10 Chipotle Gift Card";
 	}
 	else if($type==="C"){
 		$gcID = $chipotle_25;
+		$gc_description = $gc_description . " and 1 $25 Chipotle Gift Card";
 	}
 
 	$unitpriceQuery = "SELECT product_price FROM PRODUCTS WHERE product_ID='$gcID' limit 1";
@@ -98,21 +105,26 @@ if($hasgc==="true"){
 $item = $_POST['dessert'];
 $slice_id = 0;
 $description = "";
+$receipt_description = "1 Finals Box with ";
 //set slice id
 if($item==="Donuts"){
 	$slice_id = $Donut;
+	$receipt_description = $receipt_description . "Donuts";
 }
 else if($item==="Cookies"){
 	$slice_id =	$Cookie;
+	$receipt_description = $receipt_description . "Coookie Sandwiches";
 }
 else{
 	$slice_id =	$Cake;
-	$description = $_POST['cake-type'] . " " . $_POST['frosting-type'];
+	$description = $_POST['frosting type'] . " frosting " . $_POST['cake-type'] . " Cake";
+	$receipt_description = $receipt_description . "a " . $description;
 
 }
 
+$receipt_description  $receipt_description . $gc_description;
 $queries[] =  "INSERT INTO ORDER_DETAILS (product_FK, order_FK, order_description) VALUES ('$slice_id', '$id', '$description')";
-$queries[] = "UPDATE ORDERS SET order_price='$price' WHERE order_ID='$id' limit 1";
+$queries[] = "UPDATE ORDERS SET order_price='$price', order_description='$receipt_description' WHERE order_ID='$id' limit 1";
 
 //todo treat options (once figured out)
 
