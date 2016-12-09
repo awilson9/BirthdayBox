@@ -125,19 +125,19 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
 
 <div>
   <div class="jumbotron">
-    <h1 class="amatic">Choose Your Baked Good</h1>
-    <h3 class="amatic">Donuts/Sandwiches will be random flavors</h3>
+    <h1 class="amatic center">Choose Your Baked Good</h1>
+    <h3 class="amatic center">Donuts/Sandwiches will be random flavors</h3>
   </div>
 
   <div class="col-sm-6">
     <form id="dessert-form" role="form" class="form-horizontal">
       <div class="form-group">
         <label for="dessert-choice" class="control-label">Baked Good Choice</label>
-         <select class="form-control" name="dessert" id="dessert-choice">
+         <select class="form-control validate" name="dessert" id="dessert-choice">
             <option disabled selected value> -- select a baked good -- </option>
             <option value="Cake">Cake</option>
             <option value="Donuts">Donuts</option>
-            <option value="Cookies">Cookies</option>
+            <option value="Cookies">Cookie Sandwiches</option>
           </select>
       </div>
       <div class="form-group collapse" id="cake-flavor">
@@ -224,7 +224,7 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
     <h1 class="center amatic">Want to Include a Gift Card?</h1>
     </div>
     <center>
-    <img class="img-responsive" width="50%" src="../img/GiftLogosFinals.png"/>
+    <img class="img-responsive" width="50%" id="gift" src="../img/GiftLogosFinals.png"/>
     </center>
     <form id="gift-card-form">
       <div class="row center">
@@ -236,7 +236,7 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
       <div class="collapse" id="gift-card-options">
       
         <div class="row center">
-        <div class="col-xs-12">
+        <div class="col-xs-12 col-sm-6">
          <select class="form-control" name="type" id="gift-card-type">
             <option disabled selected value> -- Type -- </option>
             <option value="S">Starbucks</option>
@@ -247,7 +247,7 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
       </div>
 
       <div class="row center">
-      <div class="col-xs-12">
+      <div class="col-xs-12 col-sm-6">
            <select class="form-control" name="amount" id="gift-card-amount">
             <option disabled selected value> -- Amount -- </option>
             <option value="10">$10</option>
@@ -274,11 +274,11 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
  </div>
  <div id="card-image">
  <center>
-  <img src="/img/FinalsCardPreview.png" width="50%" class="img-responsive" style="padding:50px"/>
+  <img src="/img/FinalsCardPreview.png" width="50%" class="img-responsive" id="card" style="padding:50px"/>
   </center>
 </div>
 
- <div class="col-md-5">      
+ <div class="col-xs-12 col-sm-6">      
    <form role="form" id="personal_message">
      <div class="form-group">
        <label for="message">Write your message here (400 chars max)</label>
@@ -286,7 +286,7 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
      </div>
    </form>
  </div>
- <div class="col-md-7">
+ <div class="col-xs-12 col-sm-6">
    <h2 class="amatic">Upload a Picture!</h2>
    <p>Just drag and drop a picture anywhere on the page or click the button below</p>
    <form id="fileupload"  method="POST" enctype="multipart/form-data">
@@ -347,22 +347,22 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
    <div class="form-group">
       <label for="dp1" class="col-xs-12">Delivery Date:</label>
       <div class="col-xs-12">
-        <input type="text" class="form-control info" value="" name="date" data-date-format="mm/dd/yy" readonly="readonly" id="dp1" >
+        <input type="text" class="form-control validate" value="" name="date" data-date-format="mm/dd/yy" readonly="readonly" id="dp1" >
       </div>
     </div>
     <div class="form-group">
       <label for="name_deliv" class="col-xs-12">Recipient Name: </label>
       <div class="col-xs-6">
-        <input type="text" class="form-control info" id="fname_deliv" name="fname_deliv" placeholder="First name">
+        <input type="text" class="form-control validate" id="fname_deliv" name="fname_deliv" placeholder="First name">
       </div>
       <div class="col-xs-6">
-        <input type="text" class="form-control info" id="lname_deliv" name="lname_deliv" placeholder="Last name">
+        <input type="text" class="form-control validate" id="lname_deliv" name="lname_deliv" placeholder="Last name">
       </div>
     </div>
     <div class="form-group">
       <label for="phone-number" class="col-xs-12">Recipient Phone Number: </label>
       <div class="col-xs-12">
-        <input type="number" class="form-control info" id="phone-number" name="phone-number" placeholder="XXXXXXXXXX">
+        <input type="number" class="form-control validate" id="phone-number" name="phone-number" placeholder="XXXXXXXXXX">
       </div>
     </div>
 
@@ -370,7 +370,7 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
     <div class="form-group">
       <label for="autocomplete" class="col-xs-12">Delivery Address: </label>
       <div id="locationField" class="col-xs-12">
-        <input id="autocomplete" class="form-control info" name="address" placeholder="Enter delivery address" onFocus="geolocate()" type="text"/>
+        <input id="autocomplete" class="form-control validate" name="address" placeholder="Enter delivery address" onFocus="geolocate()" type="text"/>
       </div>
     </div>
     <div id="address">
@@ -378,7 +378,7 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
       <div class="form-group">
         <label class="col-xs-12">Apt #</label>
         <div class="col-xs-12">
-          <input class="form-control" name="apt" id="apt"/>
+          <input class="form-control validate" name="apt" id="apt"/>
         </div>
       </div>  
     </div>                
@@ -401,14 +401,14 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
         <div class="form-group">
          <label class="col-xs-12">Cardholder Name</label>
          <div class="col-xs-12">
-           <input type="text" class="form-control cardholder-name" id="cardholder-name" name="cardholder-name" placeholder="Cardholder Name">
+           <input type="text" class="form-control cardholder-name validate" id="cardholder-name" name="cardholder-name" placeholder="Cardholder Name">
          </div>
        </div>
        
        <div class="form-group">
          <label class="col-xs-12">Email Address</label>
          <div class="col-xs-12">
-           <input type="text" class="form-control email-address"  id="email-address" name="email-address" placeholder="Email Address (for receipt)">
+           <input type="text" class="form-control email-address validate"  id="email-address" name="email-address" placeholder="Email Address (for receipt)">
          </div>
        </div>
        

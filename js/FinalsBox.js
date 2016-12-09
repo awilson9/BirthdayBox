@@ -39,31 +39,7 @@ $(document).ready(function(){
   	 		}
    		}
    })
-  $('#dessert-allergies').change(function(){
-  	var proceed = true;
-  
-  	if($('#dessert-choice').val()===null){
-  			proceed = false;
-  			$('#dessert-choice').addClass('input-warning');
-  	}
-  	if($('#dessert-choice').val()==="Cake"){
-  		if($('#cake-type').val()===null){
-  			proceed = false;
-  			$('#cake-type').addClass('input-warning');
-  		}
-  		if($('#frosting-type').val()===null){
-  			proceed = false;
-  			$('#frosting-type').addClass('input-warning');
-  		}
-  	}
-  });
-  $('#treat-2').change(function(){
-  	var proceed = false;
-  	if($('#treat-1').val()===null){
-  		proceed = false;
-  		$('#treat-1').addClass('input-warning');
-  	}
-  })
+
  $("#payment-form").submit(function(event) {
  			// Flag variable:
 		var error = false;
@@ -92,8 +68,9 @@ $(document).ready(function(){
 			reportError('The expiration date appears to be invalid.');
 		}
 
-		// Validate other form elements, if needed!
 
+		// Validate other form elements, if needed!
+		error = validateForms();
 		// Check for errors:
 		if (!error) {
 
@@ -113,6 +90,55 @@ $(document).ready(function(){
     }); // form submission
 
  });//document ready
+
+$( window ).resize(function(){
+	if($(this).width()<780){
+		$('#card').attr('width', "100%");
+		$('#gift').attr('width', "100%");
+
+	}
+	else{
+		
+		$('#card').attr('width', "50%");
+		$('#gift').attr('width', "50%");
+
+	
+	}
+})
+
+function validateForms(){
+	var needFilled = [];
+	$('.validate').each(function(){
+		console.log($(this).val())
+		if($(this).val()==null||$(this).val()==""){
+			needFilled.push(this);
+			$(this).css('background-color', 'red');
+			}
+		else{
+			$(this).css('background-color', 'white');
+			if($(this).val()==="Cake"){
+				if($('#cake-type').val()==null){
+					needFilled.push($('#cake-type')[0]);
+					$('#cake-type').addClass('input-warning');
+				}
+				if($('#frosting-type').val()==null){
+					needFilled.push($('#frosting-type')[0]);
+					$('#frosting-type').addClass('input-warning');
+				}
+			}
+		}
+		});
+		if(needFilled.length==0){
+			return true;
+		}
+		else{
+			var a = needFilled[0];
+			  $('html, body').animate({
+       			 scrollTop: ($('#'+needFilled[0].id).offset().top-100)
+    			}, 2000);
+			  return false;
+		}
+	}
 
 function stripeResponseHandler(status, response) {
 
@@ -134,7 +160,7 @@ function stripeResponseHandler(status, response) {
 	  var order_id = 0;
 	  var dessert_info = $('#dessert-form').serialize();
 	  var hasgc =false;
-	 if($('#gift-card-type').val()!=null) hasgc = true;
+	 if($('#yes-gift-card').checked) hasgc = true;
 	  var giftcard_info = $('#gift-card-form').serialize();
 
 	  var delivery_info = $("#delivery_info").serialize();
