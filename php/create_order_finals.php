@@ -122,7 +122,7 @@ else{
 
 }
 
-$receipt_description  $receipt_description . $gc_description;
+$receipt_description = $receipt_description . $gc_description;
 $queries[] =  "INSERT INTO ORDER_DETAILS (product_FK, order_FK, order_description) VALUES ('$slice_id', '$id', '$description')";
 $queries[] = "UPDATE ORDERS SET order_price='$price', order_description='$receipt_description' WHERE order_ID='$id' limit 1";
 
