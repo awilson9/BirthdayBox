@@ -26,7 +26,7 @@ try {
         'amount' => $amount, // Amount in cents!
         'currency' => 'usd',
         'source' => $token,
-        'description' => 'description',
+        'description' => '1 Birthday Box',
         'receipt_email' => $email
     ));
 } catch (\Stripe\Error\Card $e) {
