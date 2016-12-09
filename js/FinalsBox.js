@@ -191,6 +191,7 @@ function stripeResponseHandler(status, response) {
 	  				$('#submitBtn').prop('disabled', false);
 	  			}
 		});
+	}
 	   
 	   	function sendSlack(id){
 	   		$.post('./php/slack_order_integration.php', 'orderID=' + id,function(data){
