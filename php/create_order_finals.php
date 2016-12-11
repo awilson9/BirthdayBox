@@ -56,7 +56,7 @@ $bs_10 = 19;
 $chipotle_10 = 20;
 $sb_10 = 21;
 $sb_25 = 22;
-
+$treat = 23;
 
 $hasgc = $_POST['hasGC'];
 $gcID = 0;
@@ -110,21 +110,23 @@ $receipt_description = "1 Finals Box with ";
 //set slice id
 if($item==="Donuts"){
 	$slice_id = $Donut;
-	$receipt_description = $receipt_description . "Donuts";
+	$receipt_description = $receipt_description . "Donuts,";
 }
 else if($item==="Cookies"){
 	$slice_id =	$Cookie;
-	$receipt_description = $receipt_description . "Coookie Sandwiches";
+	$receipt_description = $receipt_description . "Cookie Sandwiches,";
 }
 else{
 	$slice_id =	$Cake;
-	$description = $_POST['frosting-type'] . " frosting " . $_POST['cake-type'] . " Cake";
+	$description = $_POST['frosting-type'] . " frosting " . $_POST['cake-type'] . " Cake,";
 	$receipt_description = $receipt_description . "a " . $description;
 
 }
+$treat_description = " " $_POST['treat-1'] . " " . $_POST['treat-2'] . " " . $_POST['treat-3']; 
 
-$receipt_description = $receipt_description . $gc_description;
+$receipt_description = $receipt_description . $treat_description . $gc_description;
 $queries[] =  "INSERT INTO ORDER_DETAILS (product_FK, order_FK, order_description) VALUES ('$slice_id', '$id', '$description')";
+$queries[] =  "INSERT INTO ORDER_DETAILS (product_FK, order_FK, order_description) VALUES ('$treat', '$id', '$treat_description')";
 $queries[] = "UPDATE ORDERS SET order_price='$price', order_description='$receipt_description' WHERE order_ID='$id' limit 1";
 
 //todo treat options (once figured out)

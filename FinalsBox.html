@@ -117,13 +117,13 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
 </div>
 <header>
 <p class="amatic image-text">Birthdays Away From Home Just Got Better<br>
-<a id=""  href="order.html"><button type="button" class="btn btn-primary go-to-top  raised"><p class="amatic" style="font-size:30px;margin:0">Scroll To Order</p></button></a>
+<a id=""  href="#start"><button type="button" class="btn btn-primary go-to-top  raised"><p class="amatic" style="font-size:30px;margin:0">Scroll To Order</p></button></a>
 </p></header>
 
 
 <div class="container">
 
-<div>
+<div id="start">
   <div class="jumbotron">
     <h1 class="amatic center">Choose Your Baked Good</h1>
     <h3 class="amatic center">Donuts/Sandwiches will be random flavors</h3>
@@ -183,39 +183,56 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
     <h1 class="center amatic">Pick Some Treats!</h1>
     <h3 class="center amatic">These will be included at no extra charge</h3>
   </div>
-  <div class="center">
+
   <form id="treat-form" role="form" class="form-horizontal">
-  <div class="row">
-   <div class="col-xs-2"></div>
-      <div class="form-group col-xs-8">
-        <label for="treat-1" class="control-label col-xs-3">Treat 1</label>
-        <div class="col-xs-9">
-         <select class="form-control" name="treat-1" id="treat-1">
-            <option disabled selected value> -- select your first treat -- </option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
+
+      
+      <div class="form-group">
+        <label for="treat-1" class="col-xs-12">Treat</label>
+        
+        <div class="col-xs-12">
+         <select class="form-control validate" name="treat-1" id="treat-1">
+            <option disabled selected value> -- select your treat -- </option>
+            <option value="Hershey's Bar">Hershey's Bar</option>
+            <option value="Sour Patch Kids">Sour Patch Kids</option>
+            <option value="Rice Krispies Treat">Rice Krispies Treat</option>
           </select>
           </div>
-      </div>
-    </div>
-    <div class="row">
+          </div>
+      
+   
+ 
      
-      <div class="col-xs-2"></div>
-      <div class="form-group col-xs-8">
-        <label for="treat-2" class="control-label col-xs-3">Treat 2</label>
-        <div class="col-xs-9">
-         <select class="form-control" name="treat-2" id="treat-2">
-            <option disabled selected value> -- select your second treat -- </option>
-            <option value=""></option>
-            <option value=""></option>
-            <option value=""></option>
+    
+      <div class="form-group">
+        <label for="treat-2" class="col-xs-12">Snack</label>
+        <div class="col-xs-12">
+         <select class="form-control validate" name="treat-2" id="treat-2">
+            <option disabled selected value> -- select your snack -- </option>
+            <option value="Cheez-its">Cheez-its</option>
+            <option value="Pretzels">Pretzels</option>
+            <option value="Welche's Fruit Snacks">Welche's Fruit Snacks</option>
           </select>
           </div>
       </div>
-   </div>
+  
+      
+     
+   
+      <div class="form-group">
+        <label for="treat-3" class="col-xs-12">Healthy Pick</label>
+        <div class="col-xs-12">
+         <select class="form-control validate" name="treat-3" id="treat-3">
+            <option disabled selected value> -- select your healthy snack -- </option>
+            <option value="Cliff Bar">Cliff Bar</option>
+            <option value="PopCorner Kettle Chips">PopCorner Kettle Chips</option>
+            <option value="Blue Diamond Almonds">Blue Diamond Almonds</option>
+          </select>
+          </div>
+      </div>
+
    </form>
-   </div>
+
    </div>
 </div>
 <div class="container">
