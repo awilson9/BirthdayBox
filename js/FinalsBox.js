@@ -2,7 +2,7 @@
 $(document).ready(function(){
    $('#dessert-choice').change(function(){
    		var selected = $(this).find(":selected").text();
-   		if(selected==="Cake"){
+   		if(selected==="Mini Cake"){
    			$('#cake-flavor').show("slow");
    		}
    		else{
