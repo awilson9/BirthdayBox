@@ -20,7 +20,7 @@ $img = $_POST['img'];
 $name = $_POST['cardholder-name'];
 $email = $_POST['email-address'];
 $allergy = $_POST['allergies'];
-$comment = $_POST['comment'];
+$comment = $_POST['comments'];
 
 $query = "INSERT INTO ORDERS (order_address, order_apt, order_phone, order_first, order_last, order_message, order_img, order_bday, order_name, order_email, order_date, order_allergy, order_comment) VALUES ('$address', '$apt_no','$phone', '$fname', '$lname', '$message', '$img', '$date', '$name', '$email', now(), '$allergy', '$comment')";
 
@@ -122,7 +122,7 @@ else{
 	$receipt_description = $receipt_description . "a " . $description;
 
 }
-$treat_description = " " . $_POST['treat-1'] . " " . $_POST['treat-2'] . " " . $_POST['treat-3']; 
+$treat_description = " " . $_POST['treat-1'] . ", " . $_POST['treat-2'] . ", " . $_POST['treat-3'] . ","; 
 
 $receipt_description = $receipt_description . $treat_description . $gc_description;
 $queries[] =  "INSERT INTO ORDER_DETAILS (product_FK, order_FK, order_description) VALUES ('$slice_id', '$id', '$description')";
