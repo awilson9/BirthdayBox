@@ -129,11 +129,16 @@ var interval = setInterval(function() {
         		$('#gc-price').text("$10");
         		$('#total-price').text("$35");
         	}
-        	else{
+        	else if($('#gift-card-amount').val()==="25"){
         		$('#gc-price').text("$25");
         		$('#total-price').text("$50");
         	}
         } 
+        else{
+        	$('#gc-price').text("");
+        	$('#gc-display').text("");
+        	$('#total-price').text("$25");
+        }
     }
 }, 250);
 
@@ -159,6 +164,16 @@ function validateForms(){
 			}
 		}
 		});
+	if($('#yes-gift-card')[0].checked){
+		if($('#gift-card-type').val()==null){
+			needFilled.push($('#gift-card-type')[0]);
+			$('#gift-card-type').addClass('input-warning');		
+		}
+		if($('#gift-card-amount').val()==null){
+			needFilled.push($('#gift-card-amount')[0]);
+			$('#gift-card-amount').addClass('input-warning');
+		}
+	}
 		if(needFilled.length==0){
 			return false;
 		}
