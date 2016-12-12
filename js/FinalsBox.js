@@ -70,7 +70,10 @@ $(document).ready(function(){
 
 
 		// Validate other form elements, if needed!
-		error = validateForms();
+		if(!validateForms()){
+			error = true;
+			reportError("");
+		}
 		// Check for errors:
 		if (!error) {
 
