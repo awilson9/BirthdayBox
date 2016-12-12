@@ -70,7 +70,7 @@ $(document).ready(function(){
 
 
 		// Validate other form elements, if needed!
-		if(!validateForms()){
+		if(validateForms()){
 			error = true;
 			reportError("");
 		}
