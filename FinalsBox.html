@@ -117,7 +117,7 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
 </div>
 <header>
 <p class="amatic image-text">Birthdays Away From Home Just Got Better<br>
-<a id=""  href="#start"><button type="button" class="btn btn-primary go-to-top  raised"><p class="amatic" style="font-size:30px;margin:0">Scroll To Order</p></button></a>
+<a id=""  href="#start"><button type="button" class="btn btn-primary go-to-top  raised"><p class="amatic" style="font-size:30px;margin:0">Order Now for $25</p></button></a>
 </p></header>
 
 
@@ -243,16 +243,17 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
     <center>
     <img class="img-responsive" width="50%" id="gift" src="../img/GiftLogosFinals.png"/>
     </center>
+    <center>
     <form id="gift-card-form">
       <div class="row center">
         <div class="col-xs-12">
           <label for="yes"><input type="checkbox" value="" id="yes-gift-card"> Yes! My Student Would Love A Gift Card</label>
-
         </div>
       </div>
       <div class="collapse" id="gift-card-options">
       
-        <div class="row center">
+        <div class="row">
+        <div class="col-sm-3"></div>
         <div class="col-xs-12 col-sm-6">
          <select class="form-control" name="type" id="gift-card-type">
             <option disabled selected value> -- Type -- </option>
@@ -263,7 +264,8 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
           </div>
       </div>
 
-      <div class="row center">
+      <div class="row">
+      <div class="col-sm-3"></div>
       <div class="col-xs-12 col-sm-6">
            <select class="form-control" name="amount" id="gift-card-amount">
             <option disabled selected value> -- Amount -- </option>
@@ -273,13 +275,14 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
           </div>
       </div>
       </div>
-      <div class="row center">
+      <div class="row">
 
       <div class="col-xs-12">
       <label for="no" class=""><input type="checkbox" value="" id="no-gift-card"> No thanks</label>
       </div>
       </div>
     </form>
+    </center>
     </div>
 </div>
 
@@ -408,7 +411,22 @@ src="https://www.facebook.com/tr?id=364753133862142&ev=PageView
 
 <div class="container">
 <div>
-<div class="jumbotron"><h1 class="amatic">Order Summary</h1></div>
+<div class="jumbotron"><h1 class="amatic summary">Order Summary</h1></div>
+<div>
+  <div class="row">
+    <div id="display-price" class="amatic col-xs-6 summary">1 Finals Box</div>
+    <div class="col-xs-6 amatic summary">$25</div>
+  </div>
+  <div class="row">
+    <div id="gc-display" class="amatic col-xs-6 summary"></div>
+    <div id="gc-price" class="amatic col-xs-6 summary"></div>
+  </div>
+  <div class="row">
+  <legend></legend>
+    <div id="total" class="amatic col-xs-6 total">Total (Including Tax):</div>
+    <div id="total-price" class="amatic col-xs-6 total">$25</div>
+  </div>
+</div>
 
    <div> 
     <form action="" method="POST" role="form" id="payment-form" class="form-horizontal">

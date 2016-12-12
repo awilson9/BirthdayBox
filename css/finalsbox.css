@@ -1,5 +1,5 @@
 header{
-  background: url(https://www.bdayb.com/img/homepage.png) no-repeat left top fixed;;
+  background: url(https://www.bdayb.com/img/finalsbox.png) no-repeat left top fixed;;
     -webkit-background-size: contain;
     background-size: contain;
     height:100vh;
@@ -11,6 +11,7 @@ header{
 
 body{
 	background-color:#f7f7f7;
+
 }
 @media(max-width: 960px){
   header{
@@ -22,7 +23,12 @@ body{
   background-color:white;
 }
 
-
+.summary{
+  font-size:20px;
+}
+.total{
+  font-size:25px;
+}
 .container{
 	height:100%;
 	display:flex;justify-content:center;align-items:center;

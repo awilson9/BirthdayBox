@@ -109,6 +109,34 @@ $( window ).resize(function(){
 	}
 })
 
+var target = $("#delivery-container").offset().top;
+var interval = setInterval(function() {
+    if ($(window).scrollTop() >= target) {
+    	var summary = "1 Finals Box with "
+    	if($('#dessert-choice').val()==="Cake"){
+    		summary = summary + "a " + $('#frosting-type').val() + " frosting " +  $('#cake-type').val() + " Cake";
+    	}
+    	else{
+    		summary = summary + $('#dessert-choice').find(":selected").text();
+    	}
+
+        summary = summary + " with " + $('#treat-1').val() + ", " + $('#treat-2').val() + ", and " + $('#treat-3').val();
+        $('#display-price').text(summary);
+        if($('#yes-gift-card')[0].checked){
+        	var gc = "1 " + $('#gift-card-type').find(":selected").text() + " gift card";
+        	$('#gc-display').text(gc);
+        	if($('#gift-card-amount').val()==="10"){
+        		$('#gc-price').text("$10");
+        		$('#total-price').text("$35");
+        	}
+        	else{
+        		$('#gc-price').text("$25");
+        		$('#total-price').text("$50");
+        	}
+        } 
+    }
+}, 250);
+
 function validateForms(){
 	var needFilled = [];
 	$('.validate').each(function(){
