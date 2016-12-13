@@ -145,7 +145,6 @@ var interval = setInterval(function() {
 function validateForms(){
 	var needFilled = [];
 	$('.validate').each(function(){
-		console.log($(this).val())
 		if($(this).val()==null||$(this).val()==""){
 			needFilled.push(this);
 			$(this).css('background-color', 'red');
@@ -252,10 +251,12 @@ function reportError(msg) {
  
     // Show the error in the form:
     $('#payment-errors').text(msg);
- 
+ 	
     // Re-enable the submit button:
     $('#submitBtn').prop('disabled', false);
- 
+ 	  $('html, body').animate({
+       			 scrollTop: ($('#payment-errors').offset().top-100)
+    			}, 2000);
     return false;
  
 }
