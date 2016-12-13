@@ -242,7 +242,7 @@ function stripeResponseHandler(status, response) {
 	   	function sendSlack(id){
 	   		$.post('./php/slack_order_integration.php', 'orderID=' + id,function(data){
 	   			window.onbeforeunload = null;
-	   			window.location.replace("http://bdayb.com/success.html");
+	   			window.location.replace("http://bdayb.com/successF.html");
 	   });
 	   	}
 	}
