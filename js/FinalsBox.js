@@ -228,7 +228,7 @@ function stripeResponseHandler(status, response) {
 
 	   function processCharge(id){
 		f.append("<input type='hidden' name='orderID' value='" + order_id + "' />");
-		$.post('./php/buy.php', f.serialize(), function(data){
+		$.post('./php/buyFinals.php', f.serialize(), function(data){
 	  			$('#payment-errors').text(data);
 	  			if(data==="success") {
 	  				sendSlack(id);

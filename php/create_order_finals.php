@@ -62,44 +62,52 @@ $hasgc = $_POST['hasGC'];
 $gcID = 0;
 $price = 2500;
 $gc_description = "";
+$unitprice = 0;
 if($hasgc==="true"){
 	$type = $_POST['type'];
 	$amount = $_POST['amount'];
 	if($type==="S"&&$amount==="10"){
 		$gcID = $sb_10;
 		$gc_description = $gc_description . " and 1 $10 Starbucks Gift Card";
+		$unitprice = 1000;
 	}
 	else if($type==="S"){
 		$gcID = $sb_25;
 		$gc_description = $gc_description . " and 1 $25 Starbucks Gift Card";
+		$unitprice = 2500;
 	}
 	else if($type==="B"&&$amount==="10"){
 		$gcID = $bs_10;
 		$gc_description = $gc_description . " and 1 $10 Bookstore Gift Card";
+		$unitprice = 1000;
 	}
 	else if($type==="B"){
 		$gcID = $bs_25;
 		$gc_description = $gc_description . " and 1 $25 Bookstore Gift Card";
+		$unitprice = 2500;
 	}
 	else if($type==="C"&&$amount==="10"){
 		$gcID = $chipotle_10;
 		$gc_description = $gc_description . " and 1 $10 Chipotle Gift Card";
+		$unitprice = 1000;
 	}
 	else if($type==="C"){
 		$gcID = $chipotle_25;
 		$gc_description = $gc_description . " and 1 $25 Chipotle Gift Card";
+		$unitprice = 2500;
 	}
 
-	$unitpriceQuery = "SELECT product_price FROM PRODUCTS WHERE product_ID='$gcID' limit 1";
-	$unitpriceObject = mysqli_query($conn, $unitpriceQuery) or die(mysqli_error());
-	$unitprice = intval($unitpriceObject->fetch_object()->product_price);
+	
 	$price = $price + $unitprice;
-	$query = "INSERT INTO ORDER_DETAILS (product_FK, order_FK, unit_price) VALUES ('$gcID', '$id', '$unitprice' )";
+	
+	
+	$query = "INSERT INTO ORDER_DETAILS (product_FK, order_FK, unit_price) VALUES ('$gcID', '$id', '$unitprice')";
 	if(mysqli_query($conn, $query)){
 		}
 		else{
 		"Error: " . $query . "<br>" . mysqli_error($conn);
 		}
+	
 }
 
 
@@ -125,25 +133,48 @@ else{
 $treat_description = " " . $_POST['treat-1'] . ", " . $_POST['treat-2'] . ", " . $_POST['treat-3'] . ","; 
 
 $receipt_description = $receipt_description . $treat_description . $gc_description;
-$queries[] =  "INSERT INTO ORDER_DETAILS (product_FK, order_FK, order_description) VALUES ('$slice_id', '$id', '$description')";
-$queries[] =  "INSERT INTO ORDER_DETAILS (product_FK, order_FK, order_description) VALUES ('$treat', '$id', '$treat_description')";
-$queries[] = "UPDATE ORDERS SET order_price='$price', order_description='$receipt_description' WHERE order_ID='$id' limit 1";
 
-//todo treat options (once figured out)
-
-
-foreach($queries as $query){
-	if(mysqli_query($conn, $query)){
+$query = "INSERT INTO ORDER_DETAILS (product_FK, order_FK, order_description) VALUES ('$slice_id', '$id', '$description')";
+if(mysqli_query($conn, $query)){
 
 	}
 	else{
 		"Error: " . $query . "<br>" . mysqli_error($conn);
 	}
-}
+	
+
+	
+
+$query = "UPDATE ORDERS SET order_price='$price' WHERE order_ID='$id' limit 1";
+if(mysqli_query($conn, $query)){
+
+	}
+	else{
+		"Error: " . $query . "<br>" . mysqli_error($conn);
+	}
 
 
 
+	$query = "INSERT INTO ORDER_DETAILS (product_FK, order_FK, order_description) VALUES ('$treat', '$id', '$treat_description')";
+if(mysqli_query($conn, $query)){
+
+	}
+	else{
+		"Error: " . $query . "<br>" . mysqli_error($conn);
+	}
+
+$query = "INSERT INTO receipt_description (receipt_description, order_FK) VALUES ('$receipt_description', '$id')"; 
+if(mysqli_query($conn, $query)){
+
+	}
+	else{
+		"Error: " . $query . "<br>" . mysqli_error($conn);
+	}
 echo $id;
+
+
+
+
 mysqli_close($conn);
 
 ?>
